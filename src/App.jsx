@@ -13,9 +13,12 @@ function App() {
         <img alt="Todo-List" class="App-logo" src={logo}></img>
           <h1>Todo App</h1>
           <p>Bienvenue sur mon appli de gestion de liste</p>
-        {/* <button type="button" className='btn btn-light text-dark m-3'>Button from Bootstrap</button>
-        <Button type="" className='btn btn-light text-dark m-3'>Button from antd</Button> */}
-        <MyButton />
+      <MyButton 
+      tooltip="Ajouter une liste"
+      onClick={() => console.log("Ajouter une liste")}
+      >
+      Ajouter une Liste
+      </MyButton> 
       </header>
     </div>
   );
