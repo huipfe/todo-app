@@ -8,6 +8,7 @@ return (
     <Tooltip title={props.tooltip}>
         <Button
             className="m-2"
+            style={{color:props.color}}
             type={props.type}
             shape={props.shape}
             size={props.size}

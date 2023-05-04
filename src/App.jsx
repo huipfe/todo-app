@@ -1,6 +1,8 @@
 import './App.css';
 import logo from './logo.png';
 
+import { useState } from 'react';
+
 import { Button, DatePicker, Space, Tooltip, version } from "antd";
 import 'antd/dist/reset.css';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
@@ -8,6 +10,8 @@ import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import MyButton from './Component/MyButton';
 
 function App() {
+  const [color, setColor] = useState("blue");
+
   return (
     <div className="App">
       <header className="App-header" >
@@ -17,9 +21,10 @@ function App() {
       <MyButton 
       type="primary"
       shape="round"
+      color={color}
       size="large"
       tooltip="Ajouter une liste"
-      onClick={() => console.log("Ajouter une liste")}
+      onClick={() => setColor("red")}
         icon={<PlusOutlined /> }
       >
       Ajouter une Liste
