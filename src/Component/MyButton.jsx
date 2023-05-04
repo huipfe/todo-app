@@ -7,11 +7,12 @@ return (
     <>
     <Tooltip title={props.tooltip}>
         <Button
-            type="primary"
-            shape="round"
-            size="large"
-            // className='btn btn-primary text-light m-1'
+            className="m-2"
+            type={props.type}
+            shape={props.shape}
+            size={props.size}
             onClick={props.onClick}
+            icon={props.icon}
         >
         {props.children}
         </Button>
