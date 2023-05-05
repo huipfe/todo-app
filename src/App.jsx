@@ -8,9 +8,13 @@ import 'antd/dist/reset.css';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import MyButton from './Component/MyButton';
+import ListModal from './Component/ListModal';
 
 function App() {
-  const [color, setColor] = useState("blue");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  console.log(isModalOpen);
 
   return (
     <div className="App">
@@ -21,11 +25,12 @@ function App() {
       <MyButton 
       type="primary"
       shape="round"
-      color={color}
+      // color={color}
       size="large"
       tooltip="Ajouter une liste"
-      onClick={() => setColor("red")}
-        icon={<PlusOutlined /> }
+      // onClick={() => setIsModalVisible(true)}
+          onClick={() => setIsModalOpen(true)}
+      icon={<PlusOutlined /> }
       >
       Ajouter une Liste
       </MyButton> 
@@ -40,6 +45,8 @@ function App() {
         >
           Supprimer une Liste
         </MyButton> 
+
+        <ListModal modalTitle="Ajouter une liste" isModalOpen={isModalOpen} handleCancel={() => setIsModalOpen(false)} />
       </header>
     </div>
   );
