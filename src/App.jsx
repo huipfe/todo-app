@@ -1,20 +1,42 @@
 import './App.css';
 import logo from './logo.png';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Button, DatePicker, Space, Tooltip, version } from "antd";
+
 import 'antd/dist/reset.css';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import MyButton from './Component/MyButton';
 import ListModal from './Component/ListModal';
 
+import Fire from './Fire';
+
 function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setloading] = useState([]);
+  const [lists, setLists] = useState([]);
+  const [error, setError] = useState(null);
 
-  console.log(isModalOpen);
+  useEffect(() => {
+    const firebase = new Fire((error) => {
+      if (error) {
+        setError(error); 
+      } else {
+        firebase.getLists((lists) => {
+          setLists(lists);
+          setloading(false);
+        });
+      }
+
+    return function unsuscribe() {
+        firebase.detach();
+      }
+
+    }); 
+  }, []); 
+console.log(lists, loading);
 
   return (
     <div className="App">
@@ -22,6 +44,7 @@ function App() {
         <img alt="Todo-List" class="App-logo" src={logo}></img>
           <h1>Todo App</h1>
           <p>Bienvenue sur mon appli de gestion de liste</p>
+
       <MyButton 
       type="primary"
       shape="round"

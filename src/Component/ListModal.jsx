@@ -1,6 +1,4 @@
-import React from 'react'
-import { Modal } from "antd";
-import { Button } from "antd";
+import { Modal, Button } from "antd";
 import ListForm from './ListForm';
 import { useState } from 'react';
 import Fire from '../Fire';
@@ -16,9 +14,9 @@ const ListModal = (props) => {
                 setError(error);
             }else {
                 const list = {
-                    name: name,
-                    color: color,
-                    tasks: [],
+                    "name": name,
+                    "color": color,
+                    "tasks": [],
                 }
 
                 firebase.addList(list);
@@ -29,16 +27,17 @@ const ListModal = (props) => {
 
     return (
         <>
-            <Modal 
-            title={props.modalTitle} 
-            visible={props.isModalOpen} 
-            onCancel={props.handleCancel}
-            footer={[
-                <Button type="primary"  onClick={handleSubmit}>
-                    Créer
-                </Button>
-            ]}
+            <Modal
+                title={props.modalTitle}
+                visible={props.isModalOpen}
+                onCancel={props.handleCancel}
+                footer={[
+                    <Button key="create" type="primary" onClick={handleSubmit}>
+                        Créer
+                    </Button>
+                ]}
             >
+
             {error && <p>{error}</p>}
             <ListForm name={name} color={color} setName={setName} setColor={setColor}/>
 
