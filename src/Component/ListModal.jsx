@@ -6,7 +6,7 @@ import Fire from '../Fire';
 const ListModal = (props) => {
     const [name, setName] = useState("");
     const [color, setColor] = useState("#3B97FF");
-    const [error, setError] = useState([]);
+    const [error, setError] = useState(null);
 
     function handleSubmit() {
         const firebase = new Fire ((error) => { 

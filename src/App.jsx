@@ -1,23 +1,30 @@
+// Css & Logo
 import './App.css';
 import logo from './logo.png';
 
+// React Effect & State
 import { useEffect, useState } from 'react';
 
-
+// Ant Design
 import 'antd/dist/reset.css';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 
+// Components
 import MyButton from './Component/MyButton';
 import ListModal from './Component/ListModal';
 
+// Firebase
 import Fire from './Fire';
+
 
 function App() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setloading] = useState([]);
   const [lists, setLists] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
 
   useEffect(() => {
     const firebase = new Fire((error) => {
@@ -26,7 +33,7 @@ function App() {
       } else {
         firebase.getLists((lists) => {
           setLists(lists);
-          setloading(false);
+          setLoading(false);
         });
       }
 
@@ -39,11 +46,30 @@ function App() {
 console.log(lists, loading);
 
   return (
+    
     <div className="App">
       <header className="App-header" >
         <img alt="Todo-List" class="App-logo" src={logo}></img>
           <h1>Todo App</h1>
           <p>Bienvenue sur mon appli de gestion de liste</p>
+        {error && <p>{error.message}</p>}
+      {loading ? <Spin /> : (
+        <div>
+          {lists.map((list) => (
+            <div key={list.id}>
+              <h2>{list.name}</h2>
+              <p>{list.color}</p>
+            </div>
+            ))};
+              {/* {lists.tasks.map((task) => (
+                <div key={task.id}>
+                  <p>{task.name}</p>
+                  <p>{task.description}</p>
+                  <p>{task.date}</p>   
+                  </div>
+          ))}; */}
+          </div>  
+      )}
 
       <MyButton 
       type="primary"

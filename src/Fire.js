@@ -9,13 +9,13 @@ import firebase from "firebase";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "N40XKAZkEMdY6zYWkZAfMQGFbW02",
+    apiKey: "AIzaSyBdaM6wVgFTOG6NgOQ_lEqyYR3JruiufaE",
     authDomain: "todo-app-2111e.firebaseapp.com",
     projectId: "todo-app-2111e",
     storageBucket: "todo-app-2111e.appspot.com",
     messagingSenderId: "476407362265",
     appId: "1:476407362265:web:7273aca2a48aaf3e0404c8",
-    measurementId: "G-0H8MRF5ML9"
+    // measurementId: "G-0H8MRF5ML9"
 };
 
 // Initialize Firebase
@@ -34,7 +34,6 @@ export default class Fire {
             }
         })
     }
-
     get ref() {
         return firebase.firestore().collection("lists");
     }
