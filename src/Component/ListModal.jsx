@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Fire from '../Fire';
 
 const ListModal = (props) => {
-    const [name, setName] = useState("");
-    const [color, setColor] = useState("#3B97FF");
+    const [name, setName] = useState(props.list ? props.list.name : "");
+    const [color, setColor] = useState(props.list ? props.list.color : "#3B97FF");
     const [error, setError] = useState(null);
 
     function handleSubmit() {
@@ -33,7 +33,7 @@ const ListModal = (props) => {
                 onCancel={props.handleCancel}
                 footer={[
                     <Button key="create" type="primary" onClick={handleSubmit}>
-                        Créer
+                        {props.list ? "Modifier" : "Créer"}
                     </Button>
                 ]}
             >

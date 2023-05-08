@@ -25,6 +25,7 @@ function App() {
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedList, setselected] = useState (null);
 
 
   useEffect(() => {
@@ -58,20 +59,8 @@ function App() {
       {loading ? <Spin /> : (
         <div className='d-flex flex-wrap'>
           {lists.map((list) => (
-            // <div key={list.id}>
-            //   <h2 style={{color:list.color}}>{list.name}</h2>
-            //   <p style={{color:list.color}}>{list.color}</p>
-            <ListCard key={list.id} list={list}/>
-            // </div>
+            <ListCard key={list.id} list={list} setIsModalOpen={setIsModalOpen} selectedList={setselected}/>
             ))}
-
-              {/* {lists.tasks.map((task) => (
-                <div key={task.id}>
-                  <p>{task.name}</p>
-                  <p>{task.description}</p>
-                  <p>{task.date}</p>   
-                  </div>
-          ))}; */}
           </div>  
       )}
 
@@ -99,7 +88,7 @@ function App() {
           Supprimer une Liste
         </MyButton> 
 
-        <ListModal modalTitle="Ajouter une liste" isModalOpen={isModalOpen} handleCancel={() => setIsModalOpen(false)} />
+        <ListModal list={selectedList} modalTitle={selectedList ? "Modifier la liste" : "Ajouter une liste"} isModalOpen={isModalOpen} handleCancel={() => setIsModalOpen(false)} />
       </header>
     </div>
   );

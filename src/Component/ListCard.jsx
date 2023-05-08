@@ -1,5 +1,7 @@
 import { Card, Checkbox } from 'antd'
+import { PlusCircleOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import React from 'react'
+import IconButton from './IconButton';
 
 const ListCard = (props) => {
     return (
@@ -33,6 +35,32 @@ const ListCard = (props) => {
                 </>
             </div>
         ))}
+        <div className='d-flex justify-content-between'>
+
+            <IconButton 
+                tooltip='Modifier la liste'
+                    type='link'
+                    icon={<EditOutlined className='btn btn-warning text-light fs-5' />}
+                    onClick={() => {
+                        props.setIsModalOpen(true)
+                        props.selectedList(props.list)
+                    }}
+            />
+
+            <IconButton
+                tooltip='Ajouter une tâche'
+                type='link'
+                    icon={<PlusCircleOutlined className='btn btn-success fs-5' />}
+                onClick={() => console.log('Ajouter une tâche')}
+            />
+
+            <IconButton
+                tooltip='Supprimer la liste'
+                    type='link'
+                    icon={<DeleteOutlined className='btn btn-danger fs-5'/>}
+                onClick={() => console.log('Supprimer la liste')}
+            />
+        </div>
         </Card>
     );
 }
