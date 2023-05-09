@@ -3,7 +3,7 @@ import { Input } from "antd";
 
 const ListForm = (props) => {
 
-    console.log(props.name, props.color)
+    // console.log(props.name, props.color)
     function handleChange(event) {
         switch (event.target.name) {
         case "name":

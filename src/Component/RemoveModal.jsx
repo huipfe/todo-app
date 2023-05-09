@@ -34,6 +34,7 @@ const RemoveModal = (props) => {
         >
             Êtes-vous sûr de vouloir supprimer cette liste ?  
             <span style={{ color: props.list.color }}> { props.list.name} ?</span>
+            {error && <p className='text-danger'>{error}</p>}
         </Modal>
     )
 }

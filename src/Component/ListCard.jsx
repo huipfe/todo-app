@@ -3,10 +3,12 @@ import { PlusCircleOutlined, EditOutlined, DeleteOutlined } from '@ant-design/ic
 import IconButton from './IconButton';
 import { useState } from 'react';
 import RemoveModal from './RemoveModal';
+import TaksModal from './TaksModal';
 
 const ListCard = (props) => {
 
     const [isRemoveModal, setIsRemoveModal] = useState(false);
+    const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
 
     return (
         <>
@@ -56,7 +58,7 @@ const ListCard = (props) => {
                 tooltip='Ajouter une tâche'
                 type='link'
                     icon={<PlusCircleOutlined className='btn btn-success fs-5 cursor-pointer' />}
-                onClick={() => console.log('Ajouter une tâche')}
+                        onClick={() => setIsTaskModalVisible(true)}
             />
 
             <IconButton
@@ -72,6 +74,12 @@ const ListCard = (props) => {
             isVisible={isRemoveModal} 
             title={`Supprimer la liste ${props.list.name} ?`} 
             onClose={() => setIsRemoveModal(false)}
+            />
+            <TaksModal
+                isVisible={isTaskModalVisible}
+                title={`Ajouter une tâche à la liste ${props.list.name} ?`}
+                onClose={() => setIsTaskModalVisible(false)}
+                list={props.list} 
             />
         </>
     );

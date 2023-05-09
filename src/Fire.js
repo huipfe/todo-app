@@ -66,4 +66,5 @@ export default class Fire {
     detach() {
         this.unsubscribe();
     }
+
 }
