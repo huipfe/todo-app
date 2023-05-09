@@ -40,7 +40,7 @@ const ListCard = (props) => {
             <IconButton 
                 tooltip='Modifier la liste'
                     type='link'
-                    icon={<EditOutlined className='btn btn-warning text-light fs-5' />}
+                    icon={<EditOutlined className='btn btn-warning text-light fs-5 cursor-pointer' />}
                     onClick={() => {
                         props.setIsModalOpen(true)
                         props.selectedList(props.list)
@@ -50,14 +50,14 @@ const ListCard = (props) => {
             <IconButton
                 tooltip='Ajouter une tâche'
                 type='link'
-                    icon={<PlusCircleOutlined className='btn btn-success fs-5' />}
+                    icon={<PlusCircleOutlined className='btn btn-success fs-5 cursor-pointer' />}
                 onClick={() => console.log('Ajouter une tâche')}
             />
 
             <IconButton
                 tooltip='Supprimer la liste'
                     type='link'
-                    icon={<DeleteOutlined className='btn btn-danger fs-5'/>}
+                    icon={<DeleteOutlined className='btn btn-danger fs-5 cursor-pointer'/>}
                 onClick={() => console.log('Supprimer la liste')}
             />
         </div>

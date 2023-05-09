@@ -87,8 +87,9 @@ function App() {
         >
           Supprimer une Liste
         </MyButton> 
-
-        <ListModal list={selectedList} modalTitle={selectedList ? "Modifier la liste" : "Ajouter une liste"} isModalOpen={isModalOpen} handleCancel={() => setIsModalOpen(false)} />
+        {isModalOpen && ( 
+          <ListModal list={selectedList} modalTitle={selectedList ? "Modifier la liste" : "Ajouter une liste"} isModalOpen={isModalOpen} handleCancel={() => setIsModalOpen(false)} />
+        )}
       </header>
     </div>
   );

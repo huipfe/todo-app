@@ -18,8 +18,13 @@ const ListModal = (props) => {
                     "color": color,
                     "tasks": [],
                 }
-
+                if(props.list) {
+                list.id=props.list.id;
+                list.tasks=props.list.tasks;
+                firebase.updateList(list);
+                }else{
                 firebase.addList(list);
+                }
             }
         });
         props.handleCancel();
