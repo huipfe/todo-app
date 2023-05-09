@@ -1,10 +1,15 @@
 import { Card, Checkbox } from 'antd'
 import { PlusCircleOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons'
-import React from 'react'
 import IconButton from './IconButton';
+import { useState } from 'react';
+import RemoveModal from './RemoveModal';
 
 const ListCard = (props) => {
+
+    const [isRemoveModal, setIsRemoveModal] = useState(false);
+
     return (
+        <>
         <Card
             title={
                 <>
@@ -58,10 +63,17 @@ const ListCard = (props) => {
                 tooltip='Supprimer la liste'
                     type='link'
                     icon={<DeleteOutlined className='btn btn-danger fs-5 cursor-pointer'/>}
-                onClick={() => console.log('Supprimer la liste')}
+                    onClick={() => setIsRemoveModal(true)}
             />
         </div>
         </Card>
+            <RemoveModal 
+            list={props.list} 
+            isVisible={isRemoveModal} 
+            title={`Supprimer la liste ${props.list.name} ?`} 
+            onClose={() => setIsRemoveModal(false)}
+            />
+        </>
     );
 }
 
